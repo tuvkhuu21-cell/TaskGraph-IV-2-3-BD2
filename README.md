@@ -1,12 +1,68 @@
 # TaskGraph - Linux Kernel Module for Listing Tasks
 
-F.CSM302 Үйлдлийн систем / Бие даалт 1 / **IV-2-3** / Chapter 3, Project 3.
+F.CSM302 Үйлдлийн систем / **Бие даалт №2** / **IV-2-3** / Chapter 3, Project 3.
 
-Хувилбар: **v1.1.8-bd1** (UI засвар; kernel module v1.1.7). Тайлан, гарын авлага: [docs/](docs/).
+Эцсийн ажлын салбар: **bd2-final**. Kernel module-ийн дотоод хувилбар: **1.1.7**.
 
 Багийн бүрэлдэхүүн: [docs/TEAM.md](docs/TEAM.md). Шалгасан багш: **Г.Ганбат**.
 
-Repository: https://github.com/Temka0511/FCSA_302-IV-2-3-LINUX-Kernel-Module-For-Task-Information
+Repository: https://github.com/tuvkhuu21-cell/TaskGraph-IV-2-3-BD2
+
+## Бие даалт №2 — Эцсийн танилцуулга
+
+**Сэдэв:** Linux Kernel Module for Listing Tasks — TaskGraph
+
+**Баг:** IV-2-3 | **Багш:** Г. Ганбат
+
+### Эцсийн материал
+
+- [Эцсийн тайлан (PDF)](docs/IV-2-3%20report_final.pdf)
+- [Хэрэглэгчийн гарын авлага (PDF)](docs/IV-2-3%20manual_final.pdf)
+- [Постер (PDF)](docs/IV-2-3%20poster%20BD2.pdf)
+- [Багийн мэдээлэл](docs/TEAM.md)
+
+### Гол сайжруулалт
+
+IV-2-6 багийн 4, V-1-14 багийн 8 буюу нийт 12 шүүмжийг
+хянаж, код, тест, баримт бичигт шаардлагатай засвар хийсэн.
+
+- Root PID алга болсон үед хуучин граф, хүснэгтийг цэвэрлэнэ.
+- LINEAR графын эцэг–хүүхдийн холбоосыг зөв дүрсэлнэ.
+- LIVE ба FILE snapshot-ийн эх сурвалжийг ялган харуулна.
+- GUI regression тест болон алдааны шалгалтыг нэмсэн.
+- Аюулгүй байдал, Secure Boot, kernel-ийн хязгаарлалтыг баримтжуулсан.
+
+### Баталгаажсан үр дүн
+
+| Шалгалт | Үр дүн |
+|---|---|
+| Python автомат тест | 32/32 PASS |
+| Linux Mint live kernel шалгалт | 8/8 PASS |
+| Өмнөх QEMU шалгалт | 18/18 (энэ удаа давтаагүй) |
+| DFS, LINEAR, LIVE, FILE GUI | Бодит орчинд шалгасан |
+
+### Бодит дэлгэцийн зургууд
+
+**DFS харагдац**
+
+![TaskGraph DFS](docs/images/kernel_created_ui.png)
+
+**LINEAR болон бусад GUI нотолгоо**
+
+[GUI screenshot-ууд](docs/images/) ·
+[Туршилтын нотолгоо](docs/evidence/)
+
+### Түргэн эхлүүлэх
+
+Доорх **Ubuntu дээр суулгах** болон **Ажиллуулах** хэсгийн
+командуудаар модулийг хөрвүүлж, GUI-г ажиллуулна.
+Төслийг `bd2-final` салбараас татна.
+
+> Анхааруулга: `stop_machine()` ашигладаг тул зөвхөн
+> итгэмжлэгдсэн сургалтын VM орчинд ажиллуулна.
+> Secure Boot/MOK-ийн бодит ачаалалтыг баталгаажуулаагүй.
+
+---
 
 ## Зорилго
 
@@ -25,7 +81,7 @@ VirtualBox ашиглавал 2 CPU, 4 GB RAM, 40 GB диск тохиромжт
 ```bash
 sudo apt update
 sudo apt install -y build-essential linux-headers-$(uname -r) python3 python3-tk git procps
-git clone https://github.com/Temka0511/FCSA_302-IV-2-3-LINUX-Kernel-Module-For-Task-Information.git taskgraph
+git clone -b bd2-final https://github.com/tuvkhuu21-cell/TaskGraph-IV-2-3-BD2.git taskgraph
 cd taskgraph
 ```
 
@@ -251,7 +307,7 @@ parent (thread-ийн хувьд TGID) нь зориуд тусдаа баган
 ```text
 src/kernel/             C module + Kbuild Makefile
 src/taskgraph/          shared model, GUI, CLI, workload
-tests/                  32 automated checks (v1.1.8-bd1)
+tests/                  32 automated Python checks
 examples/               explicit fixture data
 scripts/                environment and live verification
 docs/                   report, manual, evidence and team metadata
