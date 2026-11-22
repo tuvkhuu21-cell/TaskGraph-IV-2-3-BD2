@@ -1,7 +1,7 @@
 name: Verify TaskGraph on Ubuntu
 on:
   push:
-    branches: [fix/peer-review-r1-r4]
+    branches: [bd2-final]
 permissions:
   contents: read
 jobs:
